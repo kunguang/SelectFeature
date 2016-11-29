@@ -7,31 +7,8 @@
     <groupId>zhukunguang</groupId>
     <artifactId>mllib</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <repositories>
+  
 
-        <repository>
-            <id>id1</id>
-            <name>name1</name>
-            <url>http://10.39.0.110:8081/nexus/content/groups/public</url>
-
-        </repository>
-        <repository>
-            <id>id2</id>
-            <name>id2</name>
-            <url>http://repo1.maven.org/maven2</url>
-
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <!--id>scala-tools.org</id>
-            <name>Scala-tools Maven2 Repository</name>
-            <url>http://scala-tools.org/repo-releases</url-->
-            <id>public</id>
-            <name>Public Repositories</name>
-            <url>http://10.39.0.110:8081/nexus/content/groups/public/</url>
-        </pluginRepository>
-    </pluginRepositories>
 
 
     <dependencies>
