@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.scalautils:scalautils_2.10:2.1.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../mavenlib/org/scalautils/scalautils_2.10/2.1.5/scalautils_2.10-2.1.5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../mavenlib/org/scalautils/scalautils_2.10/2.1.5/scalautils_2.10-2.1.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../mavenlib/org/scalautils/scalautils_2.10/2.1.5/scalautils_2.10-2.1.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<allitem>
+
+    <item>
+        <index>0</index>
+        <name>label</name>
+        <category>singlefeature</category>
+        <selectindex>0</selectindex>
+    </item>
+    <item>
+        <index>1</index>
+        <name>adidctr</name>
+        <category>singlefeature</category>
+        <selectindex>1</selectindex>
+    </item>
+    <item>
+        <index>2</index>
+        <name>query</name>
+        <category>singlefeature</category>
+        <selectindex>-1</selectindex>
+    </item>
+    <item>
+        <index>3</index>
+        <name>inter</name>
+        <category>singlefeature</category>
+        <selectindex>-1</selectindex>
+    </item>
+    <item>
+        <name>query_inter</name>
+        <category>crossfeature</category>
+        <selectindex>2</selectindex>
+    </item>
+</allitem>
