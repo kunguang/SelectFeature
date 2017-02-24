@@ -76,7 +76,7 @@ object SelectFeature{
          selectindex = i.text.toInt
       }
 
-      category = ""
+   
       if(category == "singlefeature"){
           singlemap += (name -> index)
       }else if(category == "crossfeature"){
