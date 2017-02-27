@@ -54,6 +54,7 @@ object DiscretFeature{
       index = -1
       category = ""
       name = ""
+      blocksize = 100
       for( cate <- item \"category"){
         category = cate.text
       }
@@ -124,7 +125,9 @@ object DiscretFeature{
     val savetestpath = args(3)
     val savecontinuefeaturepath = args(4) //连续特征的离散区间
     val saveidfeaturepath = args(5)    //存储离散特征编号
-    val saveselectfeapath = args(6)    //存储最终的特征编号
+    val saveidfieldpath = args(6) //存储每个特征位对应的id
+    val saveselectfeapath = args(7)    //存储特征对应的auc和Logloss
+
     val configfile = sc.textFile(configpath).collect().mkString("")
     val xmldata = analysisconfigfile(configfile)
     //1.将原来的数据根据xmldata中的selectmap,去掉不用的训练集特征.
@@ -142,14 +145,21 @@ object DiscretFeature{
     //2.等频离散以及编号.
       serialclass.discret(selectdata) //离散
     val serialdata = serialclass.serial(selectdata) //编号,
+    serialdata.persist()
      serialclass.savetrainandtest(serialdata) //保存训练集和测试集
+    //保存连续特征
+    sc.makeRDD(serialclass.featuremodel.savecontinuefeat()).saveAsTextFile(savecontinuefeaturepath)
+    //保存离散特征
+    sc.makeRDD(serialclass.featuremodel.saveidfeat()).saveAsTextFile(saveidfeaturepath)
+
+    //保存特征对应的field
+    var fieldarr = ArrayBuffer[String]()
+    for((k,v) <- xmldata.selectMap){
+        fieldarr += (k+"\t"+v)
+    }
+    sc.makeRDD(fieldarr.toArray).saveAsTextFile(saveidfieldpath)
     val featuremodel = serialclass.singlefealogloss(serialdata)
     //保存模型文件
-    //保存连续特征
-    sc.makeRDD(featuremodel.savecontinuefeat()).saveAsTextFile(savecontinuefeaturepath)
-    //保存离散特征
-    sc.makeRDD(featuremodel.saveidfeat()).saveAsTextFile(saveidfeaturepath)
-
     //保存,输出数据中,特征的编号以及每个特征的logloss
     var newarr = ArrayBuffer[String]()
     for((k,v) <- xmldata.selectMap){
