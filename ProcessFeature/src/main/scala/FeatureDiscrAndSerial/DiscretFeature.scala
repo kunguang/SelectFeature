@@ -125,8 +125,7 @@ object DiscretFeature{
     val savetestpath = args(3)
     val savecontinuefeaturepath = args(4) //连续特征的离散区间
     val saveidfeaturepath = args(5)    //存储离散特征编号
-    val saveidfieldpath = args(6) //存储每个特征位对应的id
-    val saveselectfeapath = args(7)    //存储特征对应的auc和Logloss
+    val saveselectfeapath = args(6)    //存储特征对应的auc和Logloss
 
     val configfile = sc.textFile(configpath).collect().mkString("")
     val xmldata = analysisconfigfile(configfile)
@@ -151,13 +150,6 @@ object DiscretFeature{
     sc.makeRDD(serialclass.featuremodel.savecontinuefeat()).saveAsTextFile(savecontinuefeaturepath)
     //保存离散特征
     sc.makeRDD(serialclass.featuremodel.saveidfeat()).saveAsTextFile(saveidfeaturepath)
-
-    //保存特征对应的field
-    var fieldarr = ArrayBuffer[String]()
-    for((k,v) <- xmldata.selectMap){
-        fieldarr += (k+"\t"+v)
-    }
-    sc.makeRDD(fieldarr.toArray).saveAsTextFile(saveidfieldpath)
     val featuremodel = serialclass.singlefealogloss(serialdata)
     //保存模型文件
     //保存,输出数据中,特征的编号以及每个特征的logloss
