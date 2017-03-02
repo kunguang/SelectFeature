@@ -65,8 +65,8 @@ object DiscretFeature{
       for( i <- item \"index"){
         index = i.text.toInt
       }
-      for( index <- item \"select"){
-        isselect = index.text.toInt
+      for( i <- item \"select"){
+        isselect = i.text.toInt
       }
       for( bs <- item \"blocksize"){
         blocksize = bs.text.toInt
