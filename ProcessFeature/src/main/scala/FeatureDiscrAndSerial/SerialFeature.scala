@@ -69,7 +69,11 @@ class SerialFeature extends Serializable{
               if(k == "label"){
                 newdata(v) = tmparr(0)
               }else{
-                newdata(v) = v+":"+newtmparr.mkString("|")
+                var tmpvalue = newtmparr.mkString("|")
+                if(tmpvalue == ""){
+                  tmpvalue = "0"  //如果特征值为空，默认为"0"
+                }
+                newdata(v) = v+":"+tmpvalue
               }
             }
         }
